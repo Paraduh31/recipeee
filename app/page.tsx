@@ -20,7 +20,7 @@ export default function Home() {
       .from('recipes')
       .select('*')
       .order('created_at', { ascending: false })
-      .then(({ data, error }) => {
+      .then(({ data, error }: { data: Recipe[] | null; error: { message: string } | null }) => {
         if (error) setError(error.message);
         else setRecipes(data ?? []);
         setLoading(false);
